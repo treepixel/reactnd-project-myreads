@@ -20,14 +20,21 @@ class BooksApp extends React.Component {
   }
 
   updateBook = (book, shelf) => {
-    BooksAPI.update(book, shelf).then(() => {
-      book.shelf = shelf;
-      this.setState(prevState => ({
-        books: prevState.books
-          .filter(myBook => myBook.id !== book.id)
-          .concat(book)
-      }));
+    const oldShelf = book.shelf;
+    this.updateStateOfBook(book, shelf);
+    BooksAPI.update(book, shelf).catch(() => {
+      alert('There was an error on update book. Please try again!');
+      this.updateStateOfBook(book, oldShelf);
     });
+  };
+
+  updateStateOfBook = (book, shelf) => {
+    book.shelf = shelf;
+    this.setState(prevState => ({
+      books: prevState.books
+        .filter(myBook => myBook.id !== book.id)
+        .concat(book)
+    }));
   };
 
   /**
