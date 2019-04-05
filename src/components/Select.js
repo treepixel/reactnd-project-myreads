@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Select = ({ options, book, handleChange }) => (
   <select
@@ -15,5 +16,11 @@ const Select = ({ options, book, handleChange }) => (
     ))}
   </select>
 );
+
+Select.propTypes = {
+  options: PropTypes.array.isRequired,
+  book: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired
+};
 
 export default Select;

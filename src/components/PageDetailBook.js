@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import * as BooksAPI from '../utils/BooksAPI';
+import PropTypes from 'prop-types';
 
 class PageDetailBook extends Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    onChangePage: PropTypes.object.isRequired
+  };
+
   state = {
     book: {}
   };
@@ -18,7 +24,6 @@ class PageDetailBook extends Component {
   render() {
     const { onChangePage } = this.props;
     const { book } = this.state;
-    console.log(book);
     return (
       <div>
         <div className="list-books-title">

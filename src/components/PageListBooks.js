@@ -1,5 +1,6 @@
 import React from 'react';
 import BookShelf from './BookShelf';
+import PropTypes from 'prop-types';
 
 const PageListBooks = ({ books, handleUpdateBook, onChangePage }) => {
   const shelfs = [
@@ -30,6 +31,12 @@ const PageListBooks = ({ books, handleUpdateBook, onChangePage }) => {
       </div>
     </div>
   );
+};
+
+PageListBooks.propTypes = {
+  books: PropTypes.array.isRequired,
+  handleUpdateBook: PropTypes.func.isRequired,
+  onChangePage: PropTypes.object.isRequired
 };
 
 export default PageListBooks;

@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from './Select';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Book = ({ book, onUpdateBook }) => {
   const { id, title, authors, imageLinks } = book;
@@ -36,6 +37,11 @@ const Book = ({ book, onUpdateBook }) => {
       </Link>
     </div>
   );
+};
+
+Book.propTypes = {
+  book: PropTypes.object.isRequired,
+  onUpdateBook: PropTypes.func.isRequired
 };
 
 export default Book;
