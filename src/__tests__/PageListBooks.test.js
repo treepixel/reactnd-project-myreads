@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import PageListBooks from '../components/PageListBooks';
-import books from '../mocks/Books';
+import books from '../__mocks__/Books';
 
 const setup = {
   books,
