@@ -12,7 +12,7 @@ class PageDetailBook extends Component {
     book: {}
   };
 
-  componentWillMount() {
+  componentDidMount() {
     const { id } = this.props;
     BooksAPI.get(id).then(book => {
       this.setState(() => ({
