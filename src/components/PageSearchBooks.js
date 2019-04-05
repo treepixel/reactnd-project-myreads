@@ -12,6 +12,7 @@ class PageSearchBooks extends Component {
     books: PropTypes.array.isRequired,
     searchBooks: PropTypes.func.isRequired,
     handleUpdateBook: PropTypes.func.isRequired,
+    clearSearchBooks: PropTypes.func.isRequired,
     onChangePage: PropTypes.object.isRequired
   };
 
