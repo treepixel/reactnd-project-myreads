@@ -13,8 +13,8 @@ const Book = ({ book, onUpdateBook }) => {
 
   return (
     <div className="book">
-      <Link to={`/book/${id}`}>
-        <div className="book-top">
+      <div className="book-top">
+        <Link to={`/book/${id}`}>
           <div
             className="book-cover"
             style={{
@@ -25,10 +25,12 @@ const Book = ({ book, onUpdateBook }) => {
               })`
             }}
           />
-          <div className="book-shelf-changer">
-            <Select options={options} book={book} handleChange={onUpdateBook} />
-          </div>
+        </Link>
+        <div className="book-shelf-changer">
+          <Select options={options} book={book} handleChange={onUpdateBook} />
         </div>
+      </div>
+      <Link to={`/book/${id}`}>
         <div className="book-title">{title}</div>
         <div className="book-authors">{authors}</div>
       </Link>
