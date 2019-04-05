@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import BooksGrid from './BooksGrid';
 
 class PageSearchBooks extends Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
+    this.textInput = React.createRef();
+  }
+
+  componentDidMount() {
     this.props.clearSearchBooks();
+    this.textInput.current.focus();
   }
 
   render() {
@@ -22,6 +28,7 @@ class PageSearchBooks extends Component {
           <div className="search-books-input-wrapper">
             <input
               type="text"
+              ref={this.textInput}
               placeholder="Search by title or author"
               onChange={event => searchBooks(event.target.value)}
             />

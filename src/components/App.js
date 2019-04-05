@@ -4,6 +4,7 @@ import * as BooksAPI from '../utils/BooksAPI';
 import '../styles/App.css';
 import PageSearchBooks from './PageSearchBooks';
 import PageListBooks from './PageListBooks';
+import PageDetailBook from './PageDetailBook';
 
 class BooksApp extends React.Component {
   state = {
@@ -95,6 +96,13 @@ class BooksApp extends React.Component {
               clearSearchBooks={this.clearSearchBooks}
             />
           )}
+        />
+        <Route
+          path="/book/:id"
+          render={({ history, match }) => {
+            const id = match.params.id;
+            return <PageDetailBook id={id} onChangePage={history} />;
+          }}
         />
       </div>
     );

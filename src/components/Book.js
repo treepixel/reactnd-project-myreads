@@ -1,8 +1,9 @@
 import React from 'react';
 import Select from './Select';
+import { Link } from 'react-router-dom';
 
 const Book = ({ book, onUpdateBook }) => {
-  const { title, authors, imageLinks } = book;
+  const { id, title, authors, imageLinks } = book;
   const options = [
     { value: 'currentlyReading', name: 'Currently Reading' },
     { value: 'wantToRead', name: 'Want to Read' },
@@ -12,23 +13,25 @@ const Book = ({ book, onUpdateBook }) => {
 
   return (
     <div className="book">
-      <div className="book-top">
-        <div
-          className="book-cover"
-          style={{
-            width: 128,
-            height: 188,
-            backgroundImage: `url(${
-              imageLinks ? imageLinks.smallThumbnail : 'http://bit.ly/2BFHV2l'
-            })`
-          }}
-        />
-        <div className="book-shelf-changer">
-          <Select options={options} book={book} handleChange={onUpdateBook} />
+      <Link to={`/book/${id}`}>
+        <div className="book-top">
+          <div
+            className="book-cover"
+            style={{
+              width: 128,
+              height: 188,
+              backgroundImage: `url(${
+                imageLinks ? imageLinks.smallThumbnail : 'http://bit.ly/2BFHV2l'
+              })`
+            }}
+          />
+          <div className="book-shelf-changer">
+            <Select options={options} book={book} handleChange={onUpdateBook} />
+          </div>
         </div>
-      </div>
-      <div className="book-title">{title}</div>
-      <div className="book-authors">{authors}</div>
+        <div className="book-title">{title}</div>
+        <div className="book-authors">{authors}</div>
+      </Link>
     </div>
   );
 };
