@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from '../components/App';
+import { shallow, mount } from 'enzyme';
 
-/** 
- This course is not designed to teach Test Driven Development. 
- Feel free to use this file to test your application, but it 
- is not required.
-**/
+const DELAY_MS = 2000;
+
+const sleep = ms => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -17,4 +18,24 @@ it('renders without crashing', () => {
     </BrowserRouter>,
     div
   );
+});
+
+it('Should get books from BookAPI', async () => {
+  const wrapper = shallow(<App />);
+  await wrapper.instance().componentDidMount();
+  await sleep(DELAY_MS);
+  expect(wrapper.state(`books`).length).toBeGreaterThan(1);
+});
+
+it('Should search books from BookAPI', async () => {
+  const wrapper = shallow(<App />);
+  await wrapper.instance().searchBooks('comic');
+  await sleep(DELAY_MS);
+  expect(wrapper.state(`apiBooks`).length).toBeGreaterThan(1);
+});
+
+it('Should clear search results', () => {
+  const wrapper = shallow(<App />);
+  wrapper.instance().clearSearchBooks();
+  expect(wrapper.state(`apiBooks`)).toEqual([]);
 });

@@ -18,6 +18,15 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!src/setupTests.js",
+      "!src/index.js",
+      "!src/utils/*.{js}"
+    ]
+  },
   "browserslist": [
     ">0.2%",
     "not dead",

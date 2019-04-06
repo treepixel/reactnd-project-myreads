@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1554511884763" clover="3.2.0">
+  <project timestamp="1554511884763" name="All files">
+    <metrics statements="68" coveredstatements="55" conditionals="14" coveredconditionals="11" methods="39" coveredmethods="32" elements="121" coveredelements="98" complexity="0" loc="68" ncloc="68" packages="1" files="8" classes="8">
+      <file name="App.js" path="C:\Users\anton\Documents\reactnd-project-myreads-starter\src\components\App.js">
+        <metrics statements="28" coveredstatements="15" conditionals="8" coveredconditionals="6" methods="18" coveredmethods="11"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="47" count="20" type="stmt"/>
+        <line num="48" count="140" type="cond" truecount="1" falsecount="1"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="140" type="cond" truecount="2" falsecount="0"/>
+        <line num="51" count="20" type="stmt"/>
+        <line num="54" count="20" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="61" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="75" count="10" type="stmt"/>
+        <line num="81" count="2" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="103" count="0" type="stmt"/>
+        <line num="104" count="0" type="stmt"/>
+      </file>
+      <file name="Book.js" path="C:\Users\anton\Documents\reactnd-project-myreads-starter\src\components\Book.js">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="7" count="26" type="stmt"/>
+        <line num="8" count="26" type="stmt"/>
+        <line num="15" count="26" type="stmt"/>
+        <line num="42" count="6" type="stmt"/>
+      </file>
+      <file name="BookShelf.js" path="C:\Users\anton\Documents\reactnd-project-myreads-starter\src\components\BookShelf.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="7" type="stmt"/>
+        <line num="7" count="27" type="stmt"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+      </file>
+      <file name="BooksGrid.js" path="C:\Users\anton\Documents\reactnd-project-myreads-starter\src\components\BooksGrid.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="6" count="10" type="stmt"/>
+        <line num="8" count="31" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+      </file>
+      <file name="PageDetailBook.js" path="C:\Users\anton\Documents\reactnd-project-myreads-starter\src\components\PageDetailBook.js">
+        <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="25" count="7" type="stmt"/>
+        <line num="26" count="7" type="stmt"/>
+        <line num="27" count="7" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+      </file>
+      <file name="PageListBooks.js" path="C:\Users\anton\Documents\reactnd-project-myreads-starter\src\components\PageListBooks.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+      </file>
+      <file name="PageSearchBooks.js" path="C:\Users\anton\Documents\reactnd-project-myreads-starter\src\components\PageSearchBooks.js">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+      </file>
+      <file name="Select.js" path="C:\Users\anton\Documents\reactnd-project-myreads-starter\src\components\Select.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="4" count="7" type="stmt"/>
+        <line num="5" count="29" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="13" count="116" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+      </file>
+    </metrics>
+  </project>
+</coverage>

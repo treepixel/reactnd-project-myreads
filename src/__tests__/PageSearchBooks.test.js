@@ -19,3 +19,23 @@ it('renders PageSearchBooks component without crashing', () => {
     </BrowserRouter>
   );
 });
+
+it('called function on event onChangePage', () => {
+  const test = mount(
+    <BrowserRouter>
+      <PageSearchBooks {...setup} />
+    </BrowserRouter>
+  );
+  test.find('button').simulate('click');
+  expect(setup.onChangePage.push).toHaveBeenCalledTimes(1);
+});
+
+it('called function on event searchBook', () => {
+  const wrapper = mount(
+    <BrowserRouter>
+      <PageSearchBooks {...setup} />
+    </BrowserRouter>
+  );
+  wrapper.find('input').simulate('change');
+  expect(setup.searchBooks).toHaveBeenCalledTimes(1);
+});

@@ -12,3 +12,9 @@ const setup = {
 it('renders PageListBooks component without crashing', () => {
   shallow(<PageListBooks {...setup} />);
 });
+
+it('called function on event onChangePage', () => {
+  const wrapper = shallow(<PageListBooks {...setup} />);
+  wrapper.find('button').simulate('click');
+  expect(setup.onChangePage.push).toHaveBeenCalledTimes(1);
+});
