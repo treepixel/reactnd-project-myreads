@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as BooksAPI from '../utils/BooksAPI';
 import PropTypes from 'prop-types';
+import * as St from '../styles/Styles';
 
 class PageDetailBook extends Component {
   static propTypes = {
@@ -26,17 +27,16 @@ class PageDetailBook extends Component {
     const { book } = this.state;
     return (
       <div>
-        <div className="list-books-title">
+        <St.Title>
           <button
-            className="back-list"
             onClick={() => {
               onChangePage.goBack();
             }}
           />
           <h1>MyReads</h1>
-        </div>
-        <div style={{ padding: '20px' }}>
-          <div style={{ display: 'flex' }}>
+        </St.Title>
+        <St.Content padding="20px">
+          <St.BookInfo>
             <img
               src={
                 book.imageLinks
@@ -44,17 +44,10 @@ class PageDetailBook extends Component {
                   : 'http://bit.ly/2BFHV2l'
               }
               alt={book.title}
-              style={{ marginRight: '20px', width: 128, height: 188 }}
             />
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <h3
-                style={{ marginTop: 0, marginBottom: '10px', lineHeight: '1' }}
-              >
-                {book.title}
-              </h3>
-              {book.subtitle && (
-                <h5 style={{ margin: '10px 0' }}>{book.subtitle}</h5>
-              )}
+            <St.BookResume>
+              <h3>{book.title}</h3>
+              {book.subtitle && <h5>{book.subtitle}</h5>}
               <span>
                 <strong>Authors: </strong>
                 {book.authors}
@@ -71,18 +64,13 @@ class PageDetailBook extends Component {
                 <strong>Pages: </strong>
                 {book.pageCount}
               </span>
-            </div>
-          </div>
-          <div
-            style={{
-              borderTop: '1px solid #ccc',
-              marginTop: '20px'
-            }}
-          >
-            <h5 style={{ marginTop: '10px' }}>Description:</h5>
-            <p style={{ textAlign: 'justify' }}>{book.description}</p>
-          </div>
-        </div>
+            </St.BookResume>
+          </St.BookInfo>
+          <St.Description>
+            <h5>Description:</h5>
+            <p>{book.description}</p>
+          </St.Description>
+        </St.Content>
       </div>
     );
   }

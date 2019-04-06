@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BooksGrid from './BooksGrid';
 import PropTypes from 'prop-types';
+import * as St from '../styles/Styles';
 
 class PageSearchBooks extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class PageSearchBooks extends Component {
   render() {
     const { books, searchBooks, handleUpdateBook, onChangePage } = this.props;
     return (
-      <div className="search-books">
+      <St.SearchBooks>
         <div className="search-books-bar">
           <button
             className="close-search"
@@ -46,7 +47,7 @@ class PageSearchBooks extends Component {
         <div className="search-books-results">
           <BooksGrid books={books} handleUpdateBook={handleUpdateBook} />
         </div>
-      </div>
+      </St.SearchBooks>
     );
   }
 }

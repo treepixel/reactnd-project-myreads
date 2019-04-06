@@ -1,6 +1,7 @@
 import React from 'react';
 import BookShelf from './BookShelf';
 import PropTypes from 'prop-types';
+import * as St from '../styles/Styles';
 
 const PageListBooks = ({ books, handleUpdateBook, onChangePage }) => {
   const shelfs = [
@@ -11,24 +12,22 @@ const PageListBooks = ({ books, handleUpdateBook, onChangePage }) => {
 
   return (
     <div className="list-books">
-      <div className="list-books-title">
+      <St.Title>
         <h1>MyReads</h1>
-      </div>
-      <div className="list-books-content">
-        <div>
-          {shelfs.map(shelf => (
-            <BookShelf
-              key={shelf.value}
-              books={books}
-              shelf={shelf}
-              handleUpdateBook={handleUpdateBook}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="open-search">
+      </St.Title>
+      <St.Content padding="0 0 80px">
+        {shelfs.map(shelf => (
+          <BookShelf
+            key={shelf.value}
+            books={books}
+            shelf={shelf}
+            handleUpdateBook={handleUpdateBook}
+          />
+        ))}
+      </St.Content>
+      <St.OpenSearch>
         <button onClick={() => onChangePage.push('/search')}>Add a book</button>
-      </div>
+      </St.OpenSearch>
     </div>
   );
 };

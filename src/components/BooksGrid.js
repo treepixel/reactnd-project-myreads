@@ -1,15 +1,16 @@
 import React from 'react';
 import Book from './Book';
 import PropTypes from 'prop-types';
+import * as St from '../styles/Styles';
 
 const BooksGrid = ({ books, handleUpdateBook }) => (
-  <ol className="books-grid">
+  <St.BooksGrid>
     {books.map(book => (
       <li key={book.id}>
         <Book book={book} onUpdateBook={handleUpdateBook} />
       </li>
     ))}
-  </ol>
+  </St.BooksGrid>
 );
 
 BooksGrid.propTypes = {

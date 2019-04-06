@@ -2,6 +2,7 @@ import React from 'react';
 import Select from './Select';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import * as St from '../styles/Styles';
 
 const Book = ({ book, onUpdateBook }) => {
   const { id, title, authors, imageLinks } = book;
@@ -13,7 +14,7 @@ const Book = ({ book, onUpdateBook }) => {
   ];
 
   return (
-    <div className="book">
+    <St.Book>
       <div className="book-top">
         <Link to={`/book/${id}`}>
           <div
@@ -35,7 +36,7 @@ const Book = ({ book, onUpdateBook }) => {
         <div className="book-title">{title}</div>
         <div className="book-authors">{authors}</div>
       </Link>
-    </div>
+    </St.Book>
   );
 };
 
