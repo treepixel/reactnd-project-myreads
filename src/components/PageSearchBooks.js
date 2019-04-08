@@ -16,7 +16,7 @@ class PageSearchBooks extends Component {
     handleUpdateBook: PropTypes.func.isRequired,
     clearSearchBooks: PropTypes.func.isRequired,
     onChangePage: PropTypes.object.isRequired,
-    isLoading: PropTypes.bool.isRequired
+    isLoading: PropTypes.bool
   };
 
   componentDidMount() {

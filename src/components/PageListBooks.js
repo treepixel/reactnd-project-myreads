@@ -46,7 +46,7 @@ PageListBooks.propTypes = {
   books: PropTypes.array.isRequired,
   handleUpdateBook: PropTypes.func.isRequired,
   onChangePage: PropTypes.object.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  isLoading: PropTypes.bool
 };
 
 export default PageListBooks;
