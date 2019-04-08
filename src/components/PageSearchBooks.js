@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BooksGrid from './BooksGrid';
+import Loading from './Loading';
 import PropTypes from 'prop-types';
 import * as St from '../styles/Styles';
 
@@ -14,7 +15,8 @@ class PageSearchBooks extends Component {
     searchBooks: PropTypes.func.isRequired,
     handleUpdateBook: PropTypes.func.isRequired,
     clearSearchBooks: PropTypes.func.isRequired,
-    onChangePage: PropTypes.object.isRequired
+    onChangePage: PropTypes.object.isRequired,
+    isLoading: PropTypes.bool.isRequired
   };
 
   componentDidMount() {
@@ -23,7 +25,13 @@ class PageSearchBooks extends Component {
   }
 
   render() {
-    const { books, searchBooks, handleUpdateBook, onChangePage } = this.props;
+    const {
+      books,
+      searchBooks,
+      handleUpdateBook,
+      onChangePage,
+      isLoading
+    } = this.props;
     return (
       <St.SearchBooks>
         <div className="search-books-bar">
@@ -44,9 +52,13 @@ class PageSearchBooks extends Component {
             />
           </div>
         </div>
-        <div className="search-books-results">
-          <BooksGrid books={books} handleUpdateBook={handleUpdateBook} />
-        </div>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className="search-books-results">
+            <BooksGrid books={books} handleUpdateBook={handleUpdateBook} />
+          </div>
+        )}
       </St.SearchBooks>
     );
   }

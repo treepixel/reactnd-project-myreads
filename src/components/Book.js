@@ -34,7 +34,7 @@ const Book = ({ book, onUpdateBook }) => {
       </div>
       <Link to={`/book/${id}`}>
         <div className="book-title">{title}</div>
-        <div className="book-authors">{authors}</div>
+        <div className="book-authors">{authors ? authors.join(', ') : ''}</div>
       </Link>
     </St.Book>
   );

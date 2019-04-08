@@ -3,6 +3,15 @@ import imgArrowDown from '../icons/arrow-drop-down.svg';
 import imgArrowBack from '../icons/arrow-back.svg';
 import imgAdd from '../icons/add.svg';
 
+export const Page = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* align items in Main Axis */
+  align-items: stretch; /* align items in Cross Axis */
+  align-content: stretch; /* Extra space in Cross Axis */
+`;
+
 export const Title = styled.div`
   padding: 10px 0;
   background: #2e7c31;
@@ -53,7 +62,7 @@ export const BookResume = styled.div`
   h3 {
     margin-top: 0;
     margin-bottom: 10px;
-    lineheight: 1;
+    line-height: 1;
   }
   h5 {
     margin: 10px 0;
@@ -61,10 +70,8 @@ export const BookResume = styled.div`
 `;
 
 export const Description = styled.div`
-  border-top: '1px solid #ccc',
-  margin-top: '20px'
-
-  h5 {
+  border-top: '1px solid #ccc';
+  margin-top: '20px' h5 {
     margin-top: 10px;
   }
   p {
@@ -187,6 +194,12 @@ export const Book = styled.div`
 `;
 
 export const SearchBooks = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* align items in Main Axis */
+  align-items: stretch; /* align items in Cross Axis */
+  align-content: stretch; /* Extra space in Cross Axis */
   .search-books-bar {
     position: fixed;
     width: 100%;
@@ -228,4 +241,13 @@ export const SearchBooks = styled.div`
   .search-books-results {
     padding: 80px 10px 20px;
   }
+`;
+
+export const LoadingContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 `;

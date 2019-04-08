@@ -1,20 +1,28 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import * as BooksAPI from '../utils/BooksAPI';
+import Promise from 'bluebird';
 import PageSearchBooks from './PageSearchBooks';
 import PageListBooks from './PageListBooks';
 import PageDetailBook from './PageDetailBook';
 
 class BooksApp extends React.Component {
-  state = {
-    books: [],
-    apiBooks: []
-  };
+  constructor(props) {
+    super(props);
+    Promise.config({ cancellation: true }); //Enable promise cancellation
+    this.searchPromise = Promise.resolve();
+    this.state = {
+      books: [],
+      apiBooks: [],
+      isLoading: true
+    };
+  }
 
   componentDidMount() {
     BooksAPI.getAll().then(books => {
       this.setState(() => ({
-        books
+        books,
+        isLoading: false
       }));
     });
   }
@@ -41,7 +49,7 @@ class BooksApp extends React.Component {
    * This function gets books from searchBooks and check if each book already exists in this.state.books
    * If book exists, set book.shelf with defined shelf. Otherwise, set book.shelf whith 'none'
    * */
-  updateApiBooks = books => {
+  rewriteBooksFromApi = books => {
     const apiBooksUpdated = books.map(book => {
       this.state.books.forEach(b => {
         if (book.id === b.id) {
@@ -55,54 +63,83 @@ class BooksApp extends React.Component {
     return apiBooksUpdated;
   };
 
+  /**
+   * If already exists a previous promise, It's cancelled before. Next a new promise is create and send.
+   * It's avoids request results that have not yet arrived override new requests while typing
+   */
   searchBooks = query => {
-    BooksAPI.search(query).then(result => {
-      if (!result || result.error) {
-        result = [];
-      }
-      this.setState({
-        apiBooks: this.updateApiBooks(result)
+    this.showLoading();
+    this.searchPromise.cancel();
+    if (query) {
+      this.searchPromise = this.onSearchBooks(query).then(result => {
+        !result || result.error
+          ? this.clearSearchBooks()
+          : this.updateApiBooks(this.rewriteBooksFromApi(result));
       });
+    } else {
+      this.clearSearchBooks();
+    }
+  };
+
+  onSearchBooks = query => {
+    return new Promise((resolve, reject) => {
+      BooksAPI.search(query.trim())
+        .then(resolve)
+        .catch(reject);
     });
   };
 
+  showLoading = () => {
+    this.setState({ isLoading: true });
+  };
+
   clearSearchBooks = () => {
-    this.setState({ apiBooks: [] });
+    this.updateApiBooks([]);
+  };
+
+  updateApiBooks = data => {
+    this.setState({ apiBooks: data, isLoading: false });
   };
 
   render() {
     return (
       <div className="app">
-        <Route
-          exact
-          path="/"
-          render={({ history }) => (
-            <PageListBooks
-              books={this.state.books}
-              onChangePage={history}
-              handleUpdateBook={this.updateBook}
-            />
-          )}
-        />
-        <Route
-          path="/search"
-          render={({ history }) => (
-            <PageSearchBooks
-              books={this.state.apiBooks}
-              onChangePage={history}
-              handleUpdateBook={this.updateBook}
-              searchBooks={this.searchBooks}
-              clearSearchBooks={this.clearSearchBooks}
-            />
-          )}
-        />
-        <Route
-          path="/book/:id"
-          render={({ history, match }) => {
-            const id = match.params.id;
-            return <PageDetailBook id={id} onChangePage={history} />;
-          }}
-        />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={({ history }) => (
+              <PageListBooks
+                books={this.state.books}
+                onChangePage={history}
+                handleUpdateBook={this.updateBook}
+                isLoading={this.state.isLoading}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/search"
+            render={({ history }) => (
+              <PageSearchBooks
+                books={this.state.apiBooks}
+                onChangePage={history}
+                handleUpdateBook={this.updateBook}
+                searchBooks={this.searchBooks}
+                clearSearchBooks={this.clearSearchBooks}
+                isLoading={this.state.isLoading}
+              />
+            )}
+          />
+          <Route
+            path="/book/:id"
+            render={({ history, match }) => {
+              const id = match.params.id;
+              return <PageDetailBook id={id} onChangePage={history} />;
+            }}
+          />
+          <Route render={() => <Redirect to="/" />} />
+        </Switch>
       </div>
     );
   }
